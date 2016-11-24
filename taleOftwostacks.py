@@ -3,19 +3,23 @@ class MyQueue(object):
         self.primary_stack = []
         self.secondary_stack = []
 
-        pass
     def peek(self):
-        pass
+        return self.secondary_stack[-1]
 
     def pop(self):
-        pass
+        del self.primary_stack[0]
+        self.sync_stacks()
 
     def put(self, value):
-        pass
+        self.primary_stack.append(value)
+        self.sync_stacks()
 
-    def sycn_stacks(ps,ss):
-        for val in ps:
-            pass
+    def sync_stacks(self):
+        self.secondary_stack.clear()
+        for item in reversed(self.primary_stack):
+            self.secondary_stack.append(item)
+
+
             
 
 
